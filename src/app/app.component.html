@@ -1,0 +1,41 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a class="cur" (click)="onSelectedProducts()">Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Produits
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+          <li><a class="cur" (click)="onpromo()">Promotion</a></li>
+          <li><a class="cur" (click)="onavailable()">Disponible</a></li>
+          
+        </ul>
+      </li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+    <ul  class="nav navbar-nav pull-right">
+      <li>
+      <a class="glyphicon glyphicon-log-out" (click)="onlogout()"></a>
+    </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="col-md-3">
+     <ul class="list-group" *ngIf="categories">
+       <li [ngClass]="currentcat==c?'active':''"  (click)="getProductsBycat(c)" class="list-group-item cur" *ngFor="let c of categories._embedded.categories">
+        {{c.nom}} 
+       </li>
+     </ul>
+  </div>
+  <div class="col-md-9">
+    <router-outlet>
+      
+    </router-outlet>
+  </div>
+</div>
